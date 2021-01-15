@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Fullcalendar Get Event Date On Click Example Using Jquery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" />
+</head>
+<style type="text/css">
+    #calendar {
+        width: 100%;
+    }
+    
+    #calendar {
+        margin: 0 auto;
+        font-size: 10px;
+    }
+    
+    .fc-toolbar {
+        font-size: .9em;
+    }
+    
+    .fc-toolbar h2 {
+        font-size: 12px;
+        white-space: normal !important;
+    }
+    /* click +2 more for popup */
+    
+    .fc-more-cell a {
+        display: block;
+        width: 85%;
+        margin: 1px auto 0 auto;
+        border-radius: 3px;
+        background: grey;
+        color: transparent;
+        overflow: hidden;
+        height: 4px;
+    }
+    
+    .fc-more-popover {
+        width: 100px;
+    }
+    
+    .fc-view-month .fc-event,
+    .fc-view-agendaWeek .fc-event,
+    .fc-content {
+        font-size: 0;
+        overflow: hidden;
+        height: 2px;
+    }
+    
+    .fc-view-agendaWeek .fc-event-vert {
+        font-size: 0;
+        overflow: hidden;
+        width: 2px !important;
+    }
+    
+    .fc-agenda-axis {
+        width: 20px !important;
+        font-size: .7em;
+    }
+    
+    .fc-button-content {
+        padding: 0;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js"></script>
+<script src="https://fullcalendar.io/assets/demo-to-codepen.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+        
+            eventClick: function(info) {
+                var eventObj = info.event;
+                if (eventObj.start) {
+                    alert('Clicked' + eventObj.start);
+                }
+            },
+
+            events: [{
+                title: 'Rapat sikoja',
+                start: '2021-01-01',
+                end: '2021-01-04',
+                color: 'red'
+            }, {
+                title: 'Dana bansos',
+                start: '2021-01-10',
+                end: '2021-01-15',
+                color: 'orange'
+            }]
+        });
+        calendar.render();
+    });
+</script>
+
+</html>
